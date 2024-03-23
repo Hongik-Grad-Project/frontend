@@ -33,6 +33,7 @@ export const LinkWrapper = styled.div`
     font-size: 0.875rem;
 
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     margin-left: 50vw;
@@ -49,6 +50,11 @@ export const LinkWrapper = styled.div`
         font-size: 1.2rem;
         transition: all 0.3s ease;
     }
+`;
+
+export const UserProfileImg = styled.img`
+    width: 1.875rem;
+    height: 1.875rem;
 `;
 
 export const ProfileRegisterButton = styled.button`

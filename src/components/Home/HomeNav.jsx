@@ -4,7 +4,9 @@ import { useRecoilState } from "recoil";
 import { isLoggedInState } from "../../states/userState";
 import { nickNameState } from "../../states/userState";
 import LogoImg from "../../assets/images/logo.svg";
-import { NavBox, Logo, LinkWrapper, ProfileRegisterButton } from "../../styles/Home/NavStyles";
+import { NavBox, Logo, LinkWrapper, ProfileRegisterButton, UserProfileImg } from "../../styles/Home/NavStyles";
+
+import ProfileImg from "../../assets/images/User/userProfile.svg";
 
 const HomeNav = () => {
     // Recoil을 사용하여 로그인 상태 가져오기
@@ -21,7 +23,8 @@ const HomeNav = () => {
                 {isLoggedIn ? (
                     // 로그인한 사용자를 위한 옵션
                     <>
-                        <Link to="/mypage">{nickName}</Link>
+                        <UserProfileImg src={ProfileImg} alt="프로필 이미지" />
+                        <Link to="/mypage">{nickName}님</Link>
                     </>
 
                 ) : (
