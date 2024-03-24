@@ -1,6 +1,8 @@
 import Home from './pages/Home';
 import Login from './pages/Login';
 import KakaoRedirect from './components/Login/kakao/KakaoRedirect';
+import NaverRedirect from './components/Login/naver/NaverRedirect';
+import GoogleRedirect from './components/Login/google/GoogleRedirect';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const Router = () => {
@@ -11,6 +13,8 @@ const Router = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/login/oauth2/callback/kakao" element={<KakaoRedirect />} />
+                <Route path="/login/oauth2/callback/naver" element={<NaverRedirect />} />
+                <Route path="/login/oauth2/callback/google" element={<GoogleRedirect />} />
             </Routes>
         </BrowserRouter>
     )

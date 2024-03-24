@@ -24,7 +24,7 @@ const HomeNav = () => {
                     // 로그인한 사용자를 위한 옵션
                     <>
                         <UserProfileImg src={ProfileImg} alt="프로필 이미지" />
-                        <Link to="/mypage">{nickName}님</Link>
+                        <Link to="/mypage">{nickName}</Link>
                     </>
 
                 ) : (
