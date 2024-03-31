@@ -17,7 +17,7 @@ const KakaoRedirect = (props) => {
             try {
                 const res = await axios({
                     method: "GET",
-                    url: `http://localhost:9000/api/v1/oauth2/kakao/developer?code=${code}`,
+                    url: `http://localhost:9000/api/v1/oauth2/google/developer?code=${code}`,
                     headers: {
                         "Content-Type": "application/json;charset=utf-8",
                     },

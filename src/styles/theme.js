@@ -39,56 +39,62 @@ const theme = {
 
     fontSizes: {
         // 제목
-        title42Bold: `2.625rem`,
-        title32Bold: `2rem`,
-        title24Bold: `1.5rem`,
-        title24Medium: `1.5rem`,
+        title42Bold: `42px`,
+        title32Bold: `32px`,
+        title24Bold: `24px`,
+        title24Medium: `24px`,
 
         // 부제목
-        subtitle20Bold: `1.25rem`,
-        subtitle20Medium: `1.25rem`,
-        subtitle18Bold: `1.125rem`,
-        subtitle18SemiBold: `1.125rem`,
-        subtitle18Medium: `1.125rem`,
-        subtitle18Regular: `1.125rem`,
-        subtitle16SemiBold: `1rem`,
+        subtitle20Bold: `20px`,
+        subtitle20Medium: `20px`,
+        subtitle18Bold: `18px`,
+        subtitle18SemiBold: `18px`,
+        subtitle18Medium: `18px`,
+        subtitle18Regular: `18px`,
+        subtitle16SemiBold: `16px`,
 
         // 본문
-        body16Medium: `1rem`,
-        body16Regular: `1rem`,
-        body14Medium: `0.875rem`,
-        body14Regular: `0.875rem`,
+        body16Medium: `16px`,
+        body16Regular: `16px`,
+        body14Medium: `14px`,
+        body14Regular: `14px`,
+
+        // 추가 업데이트
+        body14SemiBold: `14px`,
         
         // 캡션
-        caption12Medium: `0.75rem`,
-        caption12Regular: `0.75rem`
+        caption12Medium: `12px`,
+        caption12Regular: `12px`
     },
 
     LineHeights: {
         // 제목 lineheight
-        title42Bold: `3.625rem`,
-        title32Bold: `2.5rem`,
-        title24Bold: `2.25rem`,
-        title24Medium: `2.25rem`,
+        title42Bold: `58px`,
+        title32Bold: `40px`,
+        title24Bold: `36px`,
+        title24Medium: `36px`,
         
         // 부제목 lineheight
-        subtitle20Bold: `1.5rem`,
-        subtitle20Medium: `1.5rem`,
-        subtitle18Bold: `1.375rem`,
-        subtitle18SemiBold: `1.375rem`,
-        subtitle18Medium: `1.375rem`,
-        subtitle18Regular: `1.375rem`,
-        subtitle16SemiBold: `1.25rem`,
+        subtitle20Bold: `24px`,
+        subtitle20Medium: `24px`,
+        subtitle18Bold: `22px`,
+        subtitle18SemiBold: `22px`,
+        subtitle18Medium: `22px`,
+        subtitle18Regular: `22px`,
+        subtitle16SemiBold: `20px`,
 
         // 본문 lineheight
-        body16Medium: `1.5rem`,
-        body16Regular: `1.5rem`,
-        body14Medium: `1.375rem`,
-        body14Regular: `1.375rem`,
+        body16Medium: `24px`,
+        body16Regular: `24px`,
+        body14Medium: `22px`,
+        body14Regular: `22px`,
+
+        // 추가 업데이트
+        body14SemiBold: `20px`,
 
         // 캡션 lineheight
-        caption12Medium: `1.25rem`,
-        caption12Regular: `1.25rem`
+        caption12Medium: `20px`,
+        caption12Regular: `20px`
     },
 };
 

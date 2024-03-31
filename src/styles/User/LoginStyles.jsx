@@ -49,11 +49,10 @@ export const LoginBox = styled.div`
 `;
 
 export const StartButton = styled.div`
-    width: 15%;
-    height: 4%;
+    width: 126px;
+    height: 45px;
     background-color: ${(props) => props.theme.colors.greyscale20};
     border-radius: 5px;
-    margin-top: 10px;
 
     display: flex;
     justify-content: center;
@@ -75,7 +74,7 @@ export const StartButtonAfter = styled.div`
     border-right: 8px solid transparent;
     border-top: 16px solid ${(props) => props.theme.colors.greyscale20};
 
-    margin-bottom: 2%;
+    margin-bottom: 29px;
 
     display: flex;
     justify-content: center;
@@ -84,32 +83,32 @@ export const StartButtonAfter = styled.div`
     text-decoration: none;
 `;
 
-
-
-export const IntroText = styled.p`
+export const IntroText = styled.div`
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.medium};
-    font-size: 1.5rem;
+    font-size: ${(props) => props.theme.fontSizes.subtitle20Medium};
+    line-height: ${(props) => props.theme.LineHeights.subtitle20Medium};
+    color: ${(props) => props.theme.colors.greyscale100};
+
+    margin-bottom: 20px;
 `;
 
-
-
 export const Logo = styled.img`
-    width: 38%;
-    height: 15%;
+    width: 242px;
+    height: 46px;
+    margin-bottom: 66.95px;
 
     @media (max-width: 768px) {
         margin-left: 0;
-        margin-bottom: 10px;
+        margin-bottom: 66.95px;
     }
 `;
 
 export const NaverLoginButton = styled.a`
-    width: 55%;
-    height: 6%;
+    width: 420px;
+    height: 56px;
     background-color: #00C73C;
     border-radius: 5px;
-    margin-top: 10px;
 
     display: flex;
     justify-content: center;
@@ -126,8 +125,8 @@ export const NaverLoginButton = styled.a`
 `;
 
 export const KakaoLoginButton = styled.a`
-    width: 55%;
-    height: 6%;
+    width: 420px;
+    height: 56px;
     background-color: #FFE500;
     border-radius: 5px;    
     margin-top: 10px;
@@ -147,8 +146,8 @@ export const KakaoLoginButton = styled.a`
 `;
 
 export const GoogleLoginButton = styled.a`
-    width: 55%;
-    height: 6%;
+    width: 420px;
+    height: 56px;
     background-color: ${(props) => props.theme.colors.greyscale00};
     border-radius: 5px;
     margin-top: 10px;
@@ -170,8 +169,8 @@ export const GoogleLoginButton = styled.a`
 `;
 
 export const LoginLogo = styled.img`
-    width: 35px;
-    height: 35px;
+    width: 23px;
+    height: 23px;
 `;
 
 export const TermsOfUse = styled.p`
