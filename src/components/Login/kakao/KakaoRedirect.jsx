@@ -3,13 +3,11 @@ import { useNavigate } from "react-router";
 import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { isLoggedInState } from "../../../states/userState";
-import { nickNameState } from "../../../states/userState";
 
 
 const KakaoRedirect = (props) => {
     const navigate = useNavigate();
     const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-    const setIsNickName = useSetRecoilState(nickNameState);
     const [error, setError] = useState(null);               // 에러 상태
 
     const code = new URL(window.location.href).searchParams.get("code");
@@ -31,12 +29,7 @@ const KakaoRedirect = (props) => {
                 localStorage.setItem("accessToken", accessToken); // AccessToken 저장
                 console.log(accessToken);
 
-                const nickName = res.data.nickName;
-                localStorage.setItem("nickName", nickName); // NickName 저장
-                console.log(nickName);
-
                 setIsLoggedIn(true); // Recoil을 사용하여 로그인 상태 업데이트
-                setIsNickName(nickName); // Recoil을 사용하여 닉네임 상태 업데이트
 
                 navigate("/"); // 홈으로 리다이렉트
             } catch (error) {
@@ -46,7 +39,7 @@ const KakaoRedirect = (props) => {
             }
         };
         kakaoLogin();
-    }, [code, navigate, setIsLoggedIn, setIsNickName]);
+    }, [code, navigate, setIsLoggedIn]);
 
     if (error) return <div>로그인에 실패했습니다. {error.message}</div>; // 에러 시 UI
 

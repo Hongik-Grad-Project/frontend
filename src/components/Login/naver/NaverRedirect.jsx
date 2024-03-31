@@ -3,12 +3,10 @@ import { useNavigate } from "react-router";
 import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { isLoggedInState } from "../../../states/userState";
-import { nickNameState } from "../../../states/userState";
 
 const NaverRedirect = (props) => {
     const navigate = useNavigate();
     const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-    const setIsNickName = useSetRecoilState(nickNameState);
     const [error, setError] = useState(null);               // 에러 상태
 
     const code = new URL(window.location.href).searchParams.get("code");
@@ -40,7 +38,7 @@ const NaverRedirect = (props) => {
             }
         };
         naverLogin();
-    }, [code, navigate, setIsLoggedIn, setIsNickName]);
+    }, [code, navigate, setIsLoggedIn]);
 
     if (error) return <div>로그인에 실패했습니다. {error.message}</div>; // 에러 시 UI
 
