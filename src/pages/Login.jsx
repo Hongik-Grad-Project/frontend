@@ -4,7 +4,10 @@ import kakaoLogoImg from "../assets/images/LoginLogo/kakaoLogo.svg";
 import naverLogoImg from "../assets/images/LoginLogo/naverLogo.svg";
 import googleLogoImg from "../assets/images/LoginLogo/googleLogo.svg";
 
-import { LoginWrapper, LeftWrapper, RightWrapper, LoginBox, StartButton, StartButtonAfter, IntroText, Logo, NaverLoginButton, KakaoLoginButton, GoogleLoginButton, LoginLogo, TermsOfUse, StyledLink } from "../styles/User/LoginStyles";
+import { LoginContainer, LoginBox, Logo, TextWrapper, SignUpText, 
+    IntroText, OneLine, NaverLoginButton, KakaoLoginButton, GoogleLoginButton, 
+    LoginLogo, OrWrapper, HalfLineLeft, HalfLineRight,
+    SignUpBox, AskAccount} from "../styles/User/LoginStyles";
 
 const protocol = window.location.protocol;
 
@@ -38,44 +41,47 @@ export default function Login() {
 
 
     return (
-        <LoginWrapper>
-            <LeftWrapper>
-                {/* 이미지 삽입 예정 */}
-            </LeftWrapper>
-            <RightWrapper>
+        <LoginContainer>
                 <LoginBox>
-                    <IntroText>팀빌딩의 시작 링킷</IntroText>
                     <Logo src={LogoImg} alt="로고" />
-                    <StartButton>3초만에 시작하기</StartButton><StartButtonAfter />
-                    <NaverLoginButton onClick={handleNaverLogin}>
-                        <LoginLogo src={naverLogoImg} alt="카카오 로고" />
-                        네이버로 로그인하기
-                    </NaverLoginButton>
 
-                    <KakaoLoginButton onClick={handleKakaoLogin}>
-                        <LoginLogo src={kakaoLogoImg} alt="카카오 로고" />
-                        카카오로 로그인하기
-                    </KakaoLoginButton>
+                    <TextWrapper>
+                        <SignUpText>회원가입하기</SignUpText>
+                        <IntroText>소셜 로그인 및 이메일로 가입할 수 있습니다.</IntroText>
+                    </TextWrapper>
+                    
+                    <OneLine/>
 
                     <GoogleLoginButton onClick={handleGoogleLogin}>
                         <LoginLogo src={googleLogoImg} alt="카카오 로고" />
-                        구글로 로그인하기
+                        Google로 시작하기
                     </GoogleLoginButton>
 
-                    <TermsOfUse>
-                        회원가입시 linkit의&nbsp;
-                        <StyledLink to="/terms_of_use" style={{ textDecoration: 'underline' }}>
-                            서비스 이용약관
-                        </StyledLink>
-                        과&nbsp;
-                        <StyledLink to="/privacy_policy" style={{ textDecoration: 'underline' }}>
-                            개인정보 보호정책
-                        </StyledLink>
-                        에 동의하게됩니다.
-                    </TermsOfUse>
+                    <KakaoLoginButton onClick={handleKakaoLogin}>
+                        <LoginLogo src={kakaoLogoImg} alt="카카오 로고" />
+                        카카오로 시작하기
+                    </KakaoLoginButton>
+                    
+                    <NaverLoginButton onClick={handleNaverLogin}>
+                        <LoginLogo src={naverLogoImg} alt="카카오 로고" />
+                        네이버로 시작하기
+                    </NaverLoginButton>
+
+                    <OrWrapper>
+                        <HalfLineLeft/>
+                        또는
+                        <HalfLineRight/>
+                    </OrWrapper>
+
+                    <SignUpBox>
+                        ID / PW 회원가입
+                    </SignUpBox>
+
+                    <AskAccount>
+                        이미 계정이 있으신가요? 로그인
+                    </AskAccount>
                 </LoginBox>
-            </RightWrapper>
-        </LoginWrapper>
+        </LoginContainer>
     );
 };
 

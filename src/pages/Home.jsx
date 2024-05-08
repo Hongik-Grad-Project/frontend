@@ -34,7 +34,7 @@ const Home = () => {
 export default Home;
 
 export const HomeWrapperTesting = styled.div`
-    background-color: #FAFAFA;
+    background-color: #000000;
     width: 100vw;
     height: 100vh;
 `;
