@@ -39,7 +39,7 @@ const KakaoRedirect = (props) => {
     useEffect(() => {
         const googleLogin = async () => {
             try {
-                fetch(`http://13.209.251.1/login/${provider}`, {
+                fetch(`https://13.209.251.1/login/${provider}`, {
                     method: 'POST',
                     headers: { "Content-Type": "application/json;charset=utf-8" },
                     credentials: 'include', // 쿠키를 포함시키기 위해 필요
