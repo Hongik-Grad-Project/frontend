@@ -213,3 +213,16 @@ export const AskAccount = styled.div`
     margin-top: 23px;
     cursor: pointer;
 `;
+
+export const StyledLink = styled(Link)`
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.regular};
+    font-size: ${(props) => props.theme.fontSizes.fontSize10};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: #00BF53;
+
+    text-decoration: underline;
+    transition: all 0.3s ease;
+
+    margin-left: 5px;
+`;

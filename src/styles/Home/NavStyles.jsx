@@ -7,26 +7,26 @@ export const NavBox = styled.div`
     background-color: ${(props) => props.theme.colors.white};
     display: flex;
     align-items: center;
-
-    @media (max-width: 1120px) {
-        width: 1120px; // 너비를 100%로 설정하여 부모 요소에 따라 조절되도록 함
-        overflow-x: auto; // 1120px 이하에서 가로 스크롤바가 나타나지 않도록 설정
-    }
+    border-bottom: 0.5px solid #F0F0F0;
 `;
 
-export const LeftWrapper = styled.div`
-    width: 60%;
-    display: flex;
-    justify-content: center;
-`;
+// export const LeftWrapper = styled.div`
+//     width: 75%;
+//     display: flex;
+//     justify-content: center;
+// `;
 
-export const RightWrapper = styled.div`
-    width: 40%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 28px;
-    margin-right: 114px;
+// export const RightWrapper = styled.div`
+//     width: 25%;
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     gap: 28px;
+//     margin-right: 114px;
+// `;   
+
+export const NavWrapper = styled.div`
+    
 `;
 
 export const Logo = styled.img`

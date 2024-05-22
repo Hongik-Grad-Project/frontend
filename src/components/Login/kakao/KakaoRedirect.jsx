@@ -31,7 +31,7 @@ const KakaoRedirect = (props) => {
 
                 setIsLoggedIn(true); // Recoil을 사용하여 로그인 상태 업데이트
 
-                navigate("/"); // 홈으로 리다이렉트
+                // navigate("/"); // 홈으로 리다이렉트
             } catch (error) {
                 console.error(error);
                 setError(error); // 에러 상태 업데이트

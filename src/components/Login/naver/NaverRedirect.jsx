@@ -7,38 +7,31 @@ import { isLoggedInState } from "../../../states/userState";
 const NaverRedirect = (props) => {
     const navigate = useNavigate();
     const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-    const [error, setError] = useState(null);               // 에러 상태
-
-    const code = new URL(window.location.href).searchParams.get("code");
-
+    const [error, setError] = useState(null);
+    const code = new URL(window.location.href).searchParams.get("code");    // 인증 코드
+    const provider = "naver"; // 로그인 제공자
+    // 카카오 로그인(회원가입)
+    // 신규 사용자 및 기존 사용자 구분 필요
+    // accessToken refreshToken에 따른 작업 필요
     useEffect(() => {
         const naverLogin = async () => {
             try {
-                const res = await axios({
-                    method: "GET",
-                    url: `http://localhost:9000/api/v1/oauth2/naver/developer?code=${code}`,
-                    headers: {
-                        "Content-Type": "application/json;charset=utf-8",
-                    },
-                    withCredentials: true,
-                });
-
-                console.log(res);
-                const accessToken = res.data.accessToken;
-                localStorage.setItem("accessToken", accessToken); // AccessToken 저장
-                console.log(accessToken);
-
-                setIsLoggedIn(true); // Recoil을 사용하여 로그인 상태 업데이트
-
-                navigate("/"); // 홈으로 리다이렉트
+                fetch(`http://13.209.251.1/login/${provider}`, {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json;charset=utf-8" },
+                    credentials: 'include', // 쿠키를 포함시키기 위해 필요
+                    body: JSON.stringify({ code: code }) // 로그인 요청 본문에 인증 코드 포함
+                })
+                    .then(response => response.json())
+                    .catch(error => {
+                        console.error("로그인에 실패했습니다.", error);
+                    });
             } catch (error) {
-                console.error(error);
-                setError(error); // 에러 상태 업데이트
-
+                setError(error);
             }
         };
         naverLogin();
-    }, [code, navigate, setIsLoggedIn]);
+    }, [code, navigate]);
 
     if (error) return <div>로그인에 실패했습니다. {error.message}</div>; // 에러 시 UI
 

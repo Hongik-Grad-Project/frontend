@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import HomeNav from '../components/Home/HomeNav';
+import HomeContent from '../components/Home/HomeContent';
 import styled from 'styled-components';
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
         const accessToken = localStorage.getItem("accessToken");
 
         if(accessToken) {
-            fetch("http://localhost:9000/api/v1", {
+            fetch("http://localhost:8080/api/v1", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
@@ -26,6 +27,7 @@ const Home = () => {
     return (
         <HomeWrapperTesting>
             <HomeNav />
+            <HomeContent />
         </HomeWrapperTesting>
         
     );
@@ -34,7 +36,7 @@ const Home = () => {
 export default Home;
 
 export const HomeWrapperTesting = styled.div`
-    background-color: #000000;
+    background-color: #FAFAFA;
     width: 100vw;
     height: 100vh;
 `;
