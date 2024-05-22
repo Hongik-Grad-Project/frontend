@@ -17,8 +17,8 @@ const protocol = window.location.protocol;
 const naverApiKey = process.env.REACT_APP_NAVER_REST_API_KEY;
 const googleApiKey = process.env.REACT_APP_GOOGLE_REST_API_KEY;
 
-const naverRedirectUri = `${protocol}//localhost:3000/login/oauth2/callback/naver`;
-const googleRedirectUri = `${protocol}//localhost:3000/login/oauth2/callback/google`;
+const naverRedirectUri = `https://frontend-xi-fawn-73.vercel.app/login/oauth2/callback/naver`;
+const googleRedirectUri = `https://frontend-xi-fawn-73.vercel.app/login/oauth2/callback/google`;
 
 const naverURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverApiKey}&redirect_uri=${naverRedirectUri}&state=test`;
 const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleApiKey}&redirect_uri=${googleRedirectUri}&response_type=code&scope=email profile`;
