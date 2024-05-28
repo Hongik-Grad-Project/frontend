@@ -11,6 +11,7 @@ const theme = {
         semiLightGrey: '#E2E6EF',
         lightGrey: '#F4F6FA',
         ashGrey: '#F0F0F0',
+        white: '#FFFFFF',
     },
     
     fonts: {

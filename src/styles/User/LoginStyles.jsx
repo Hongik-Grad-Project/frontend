@@ -8,18 +8,12 @@ export const LoginContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-
-    @media (max-width: 1120px) {
-        width: 1120px;
-        overflow-x: auto;
-    }
 `;
 
 export const LoginBox = styled.div`
-    background-color: ${(props) => props.theme.colors.white};
+    background-color: #FEFEFE;
     width: 504px;
-    height: 658px;
+    height: 500px;
     flex-shrink: 0;
     display: flex;
 
@@ -27,7 +21,6 @@ export const LoginBox = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 30px;
-
 `;
 
 export const TextWrapper = styled.div`

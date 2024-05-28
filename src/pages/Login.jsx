@@ -10,15 +10,13 @@ import { LoginContainer, LoginBox, Logo, TextWrapper, SignUpText,
     LoginLogo, OrWrapper, HalfLineLeft, HalfLineRight,
     SignUpBox, AskAccount, StyledLink} from "../styles/User/LoginStyles";
 
-import axios from "axios";
-
 const protocol = window.location.protocol;
 
 const naverApiKey = process.env.REACT_APP_NAVER_REST_API_KEY;
 const googleApiKey = process.env.REACT_APP_GOOGLE_REST_API_KEY;
 
-const naverRedirectUri = `${protocol}//localhost:3000/login/oauth2/callback/naver`;
-const googleRedirectUri = `https://frontend-xi-fawn-73.vercel.app//login/oauth2/callback/google`;
+const naverRedirectUri = `https://myaurora.co.kr/login/oauth2/callback/naver`;
+const googleRedirectUri = `https://myaurora.co.kr/login/oauth2/callback/google`;
 
 const naverURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverApiKey}&redirect_uri=${naverRedirectUri}&state=test`;
 const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleApiKey}&redirect_uri=${googleRedirectUri}&response_type=code&scope=email profile`;
@@ -37,7 +35,6 @@ export default function Login(props) {
         <LoginContainer>
                 <LoginBox>
                     <Logo src={LogoImg} alt="로고" />
-
                     <TextWrapper>
                         <SignUpText>회원가입하기</SignUpText>
                         <IntroText>소셜 로그인 및 이메일로 가입할 수 있습니다.</IntroText>
@@ -60,7 +57,7 @@ export default function Login(props) {
                         네이버로 시작하기
                     </NaverLoginButton>
 
-                    <OrWrapper>
+                    {/* <OrWrapper>
                         <HalfLineLeft/>
                         또는
                         <HalfLineRight/>
@@ -72,7 +69,7 @@ export default function Login(props) {
 
                     <AskAccount>
                         이미 계정이 있으신가요? <StyledLink to="/login">로그인</StyledLink>
-                    </AskAccount>
+                    </AskAccount> */}
                 </LoginBox>
         </LoginContainer>
     );
