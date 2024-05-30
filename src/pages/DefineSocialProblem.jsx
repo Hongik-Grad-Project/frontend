@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import Logoimg from '../assets/images/logo.svg';
+import { useNavigate } from 'react-router';
 
 export default function DefineSocialProblem() {
+
+    const navigate = useNavigate();
+
+    const handleChatClick = () => {
+        navigate('/chat');
+    };
+
     return (
         <>
             <HomeNav />
@@ -24,8 +32,8 @@ export default function DefineSocialProblem() {
                                     긍정적인 사회 변화를 위한 <br />
                                     공익 프로젝트를 진행할 수 있어요!
                                 </LeftSubHeadText>
-                                <LeftChatButton>
-                                    채팅하기
+                                <LeftChatButton onClick={handleChatClick}>
+                                    AI와 채팅하기
                                 </LeftChatButton>
                             </BodyLeftBox>
                             <BodyRightBox>
@@ -62,7 +70,7 @@ export default function DefineSocialProblem() {
                                 </TextHeader>
                                 <TextBody>
                                     오로라 AI와 함께<br/>
-                                    사회 문제를 논의해보세요.
+                                    사회 문제를 정의해봐요.
                                 </TextBody>
                             </TextWrapper>
                             <TextWrapper>
@@ -185,7 +193,7 @@ const LeftSubHeadText = styled.div`
 `;
 
 const LeftChatButton = styled.button`
-    width: 99px;
+    width: 132px;
     height: 40px;
     flex-shrink: 0;
 
@@ -249,7 +257,7 @@ const NumberNotice = styled.div`
 `;
 
 const ConnectRow = styled.div`
-    width: 122px;
+    width: 110px;
     height: 2.5px;
     background-color: #AEA0FF;
     margin: 20px 0;
@@ -267,7 +275,7 @@ const TextContainer = styled.div`
 `;
 
 const TextWrapper = styled.div`
-    width: 170px;
+    width: 150px;
     height: 70px;
     display: flex;
     flex-direction: column;

@@ -1,10 +1,13 @@
 import Home from './pages/Home';
 import Login from './pages/Login';
 import DefineSocialProblem from './pages/DefineSocialProblem';
+import AuroraChat from './pages/AuroraChat';
+import ChatSummary from './pages/ChatSummary';
 import KakaoRedirect from './components/Login/kakao/KakaoRedirect';
 import NaverRedirect from './components/Login/naver/NaverRedirect';
 import GoogleRedirect from './components/Login/google/GoogleRedirect';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 const Router = () => {
     return (
@@ -17,7 +20,8 @@ const Router = () => {
                 <Route path="/login/oauth2/callback/naver" element={<NaverRedirect />} />
                 <Route path="/login/oauth2/callback/google" element={<GoogleRedirect />} />
                 <Route path="/define-social-problem" element={<DefineSocialProblem />} />
-
+                <Route path="/chat" element={<AuroraChat />} />
+                <Route path="/chat/summary" element={<ChatSummary />} />
             </Routes>
         </BrowserRouter>
     )
