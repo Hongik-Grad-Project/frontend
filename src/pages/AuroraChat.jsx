@@ -1,8 +1,37 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import chatSendImg from '../assets/images/chatSend.svg';
+import { useNavigate } from 'react-router';
 
 export default function AuroraChat() {
+    const [messages, setMessages] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const navigate = useNavigate();
+
+    const handleChatFinishClick = () => {
+        navigate('/chat/summary');
+    };
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const handleSendClick = (event) => {
+        event.preventDefault();
+        if (inputValue.trim()) {
+            setMessages([...messages, { text: inputValue, sender: 'user' }]);
+            setInputValue('');
+        }
+    };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleSendClick(event);
+        }
+    };
+
     return (
         <>
             <HomeNav />
@@ -11,16 +40,27 @@ export default function AuroraChat() {
                 오로라 AI와 이야기 해보세요? 아이디어가 구체화 될 거에요.
                 <ChatWrapper>
                     <MessageContainer>
-                        {/* 여기에 채팅 메시지를 동적으로 추가 */}
+                        {messages.map((message, index) => (
+                            <MessageBubble key={index} $sender={message.sender}>
+                                {message.text}
+                            </MessageBubble>
+                        ))}
                     </MessageContainer>
                     <InputContainer>
                         <InputWrapper>
-                            <InputBox placeholder="Message ChatGPT" />
-                            <SendButton>
+                            <InputBox
+                                placeholder="Message ChatGPT"
+                                value={inputValue}
+                                onChange={handleInputChange}
+                                onKeyPress={handleKeyPress}
+                            />
+                            <SendButton onClick={handleSendClick}>
                                 <img src={chatSendImg} alt="Send" />
                             </SendButton>
                         </InputWrapper>
-                        <ChatEndButton>대화 끝내기</ChatEndButton>
+                        <ChatEndButton onClick={handleChatFinishClick}>
+                            대화 끝내기
+                        </ChatEndButton>
                     </InputContainer>
                 </ChatWrapper>
             </ChatContainer>
@@ -29,7 +69,7 @@ export default function AuroraChat() {
 }
 
 const ChatContainer = styled.div`
-    background-color: #FAFAFA;
+    background-color: #F4F6FA;
     min-height: 100vh;
     white-space: pre-wrap;
     display: flex;
@@ -46,12 +86,15 @@ const ChatContainer = styled.div`
 
 const ChatWrapper = styled.div`
     width: 100%;
-    max-width: 800px;
+    max-width: 1100px;
     height: calc(100vh - 80px - 120px); // 80px은 네비게이션 바 높이, 26px은 padding-top
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background-color: #FFFFFF;
+    margin-top: 12px;
+    border-radius: 10px;
 `;
 
 const MessageContainer = styled.div`
@@ -62,6 +105,22 @@ const MessageContainer = styled.div`
     align-items: flex-start;
     margin-bottom: 20px;
     overflow-y: auto;
+`;
+
+const MessageBubble = styled.div`
+    background-color: ${(props) => (props.$sender === 'user' ? '#776BFF' : '#FFFFFF')};
+    border: 1px solid ${(props) => (props.$sender === 'user' ? '#A6E87E' : '#DDDDDD')};
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 80%;
+    align-self: ${(props) => (props.$sender === 'user' ? 'flex-end' : 'flex-start')};
+
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.regular};
+    font-size: ${(props) => props.theme.fontSizes.fontSize20};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => (props.$sender === 'user' ? '#FEFEFE' : '#000000')};
 `;
 
 const InputContainer = styled.div`
@@ -75,7 +134,6 @@ const InputWrapper = styled.div`
     width: 615px; /* InputBox와 같은 너비 */
     height: 45px;
     flex-shrink: 0;
-    
 `;
 
 const InputBox = styled.input`

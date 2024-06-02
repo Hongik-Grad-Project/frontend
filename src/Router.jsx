@@ -3,6 +3,8 @@ import Login from './pages/Login';
 import DefineSocialProblem from './pages/DefineSocialProblem';
 import AuroraChat from './pages/AuroraChat';
 import ChatSummary from './pages/ChatSummary';
+import CreateProject from './pages/CreateProejct';
+import ProjectBody from './pages/ProjectBody';
 import KakaoRedirect from './components/Login/kakao/KakaoRedirect';
 import NaverRedirect from './components/Login/naver/NaverRedirect';
 import GoogleRedirect from './components/Login/google/GoogleRedirect';
@@ -22,6 +24,8 @@ const Router = () => {
                 <Route path="/define-social-problem" element={<DefineSocialProblem />} />
                 <Route path="/chat" element={<AuroraChat />} />
                 <Route path="/chat/summary" element={<ChatSummary />} />
+                <Route path="/create-project" element={<CreateProject />} />
+                <Route path="/project-body" element={<ProjectBody />} />
             </Routes>
         </BrowserRouter>
     )

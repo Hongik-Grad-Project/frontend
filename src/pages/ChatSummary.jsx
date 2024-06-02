@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import CreateChatImg from '../assets/images/createChatImage.svg';
+import { useNavigate } from 'react-router';
+
 export default function ChatSummary() {
+
+    const navigate = useNavigate();
+
+    const handleStartProjectClick = () => {
+        navigate('/create-project');
+    };
+
     return (
         <>
             <HomeNav />
@@ -18,6 +27,9 @@ export default function ChatSummary() {
                     <NonPickTitleBox>
                         데이트폭력 문제
                     </NonPickTitleBox>
+                    <GoToChatButton>
+                        <img src={CreateChatImg} alt="GoToChat" />
+                    </GoToChatButton>
                 </TitleBar>
                 <SummaryWrapper>
                     <ProjectSummary>
@@ -43,7 +55,7 @@ export default function ChatSummary() {
                             · 은퇴 후 사업을 시작한 후 성공한 후기를 모아 보는 사이트<br />
                         </ProjectContent>
                     </ProjectSummary>
-                    <StartProjectButton>
+                    <StartProjectButton onClick={handleStartProjectClick}>
                         프로젝트 하러가기
                     </StartProjectButton>
                 </SummaryWrapper>
@@ -78,6 +90,25 @@ const TitleBar = styled.div`
 
     padding-top: 18px;
     padding-left: 18px;
+
+    position: relative;
+`;
+
+const GoToChatButton = styled.div`
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    margin-top: 20px; /* 필요에 따라 조정하세요 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const PickTitleBox = styled.div`
@@ -189,4 +220,6 @@ const StartProjectButton = styled.div`
     align-items: center;
 
     margin-bottom: 29px;
+
+    cursor: pointer;
 `;

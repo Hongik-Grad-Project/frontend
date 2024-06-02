@@ -1,42 +1,39 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import HomeNav from '../components/Home/HomeNav';
-import HomeContent from '../components/Home/HomeContent';
+import FirstLandingImg from '../assets/images/Landing/first.svg';
+import SecondLandingImg from '../assets/images/Landing/second.svg';
+import ThirdLandingImg from '../assets/images/Landing/third.svg';
+import FourthLandingImg from '../assets/images/Landing/forth.svg';
+import FifthLandingImg from '../assets/images/Landing/fifth.svg';
 import styled from 'styled-components';
 
 const Home = () => {
-    const [profile, setProfile] = useState(null);
-
-    useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-
-        if(accessToken) {
-            fetch("http://localhost:8080/api/v1", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                setProfile(data);
-            })
-            .catch(error => console.error("Error fetching user profile", error));
-        }
-    }, []);
-    
     return (
-        <HomeWrapperTesting>
+        <>
             <HomeNav />
-            <HomeContent />
-        </HomeWrapperTesting>
-        
+            <LandingContainer>
+                <LandingImageComponent src={FirstLandingImg} alt="First Landing" />
+                <LandingImageComponent src={SecondLandingImg} alt="Second Landing" />
+                <LandingImageComponent src={ThirdLandingImg} alt="Third Landing" />
+                <LandingImageComponent src={FourthLandingImg} alt="Fourth Landing" />
+                <LandingImageComponent src={FifthLandingImg} alt="Fifth Landing" />
+            </LandingContainer>
+        </>
     );
 };
 
 export default Home;
 
-export const HomeWrapperTesting = styled.div`
-    background-color: #FAFAFA;
-    width: 100vw;
-    height: 100vh;
+const LandingContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* 이미지 사이의 간격 */
+`;
+
+const LandingImageComponent = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: 100px;
 `;
