@@ -210,7 +210,16 @@ const LeftChatButton = styled.button`
     font-size: ${(props) => props.theme.fontSizes.fontSize16};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
     color: #AEA0FF;
+
+    cursor: pointer;
+    
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
+
 
 const BodyLeftBox = styled.div`
 `;

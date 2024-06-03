@@ -24,12 +24,21 @@ export default function ChatSummary() {
                 <TitleBar>
                     <PickTitleBox>
                         노인 일자리 부족 문제
+                        <TimeAndDate>
+                            오후 1:24
+                        </TimeAndDate>
                     </PickTitleBox>
                     <NonPickTitleBox>
                         쓰레기 문제
+                        <TimeAndDate>
+                            어제
+                        </TimeAndDate>
                     </NonPickTitleBox>
                     <NonPickTitleBox>
                         데이트폭력 문제
+                        <TimeAndDate>
+                            2024.5.8
+                        </TimeAndDate>
                     </NonPickTitleBox>
                     <GoToChatButton onClick={handleGotoChatClick}>
                         <img src={CreateChatImg} alt="GoToChat" />
@@ -74,7 +83,7 @@ export default function ChatSummary() {
 
 const SummaryContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #F4F6FA;
     display: flex;
     justify-content: center;
@@ -82,10 +91,10 @@ const SummaryContainer = styled.div`
 `;
 
 const TitleBar = styled.div`
-    margin-top: 16px;
+    margin-top: 20px;
 
     width: 303px;
-    height: 100vh;
+    height: 713px;
     flex-shrink: 0;
 
     border-radius: 5px;
@@ -126,9 +135,9 @@ const PickTitleBox = styled.div`
 
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    flex-direction: column;
 
-    padding-left: 13px;
+    padding: 11px 10px 11px 10px; 
 
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.bold};
@@ -148,7 +157,9 @@ const NonPickTitleBox = styled.div`
 
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    flex-direction: column;
+
+    padding: 11px 10px 11px 10px; 
 
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.regular};
@@ -159,12 +170,11 @@ const NonPickTitleBox = styled.div`
 
 const SummaryWrapper = styled.div`
     display: flex;
-    justify-content: center;
     flex-direction: column;
 `;
 
 const ProjectSummary = styled.div`
-    margin-top: 124px;
+    margin-top: 20px;
     margin-left: 65px;
 
     width: 745px;
@@ -226,4 +236,12 @@ const StartProjectButton = styled.div`
     margin-bottom: 29px;
 
     cursor: pointer;
+`;
+
+const TimeAndDate = styled.div`
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.regular};
+    font-size: ${(props) => props.theme.fontSizes.fontSize12};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.black};
 `;

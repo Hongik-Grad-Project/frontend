@@ -1,31 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-export default function Dropdown(){
-    const textOptions = [
-        "All",
-        "The A",
-        "The B",
-        "The C",
-        "This A",
-        "This B",
-        "This C"
-    ];
-
+export default function Dropdown({ options = [], placeholder, onSelect }) {
     const [searchItem, setSearchItem] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [item, setItem] = useState('대상 선택');
+    const [selectedItem, setSelectedItem] = useState(placeholder);
+
+    console.log('Dropdown options:', options); // Debugging
 
     return (
         <DropdownWrapper>
-            <DropdownBox
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {item}
+            <DropdownBox onClick={() => setIsOpen(!isOpen)}>
+                {selectedItem}
                 <Arrow>▼</Arrow>
             </DropdownBox>
 
-            {isOpen &&  
+            {isOpen && (
                 <SelectWrapper>
                     <SelectInput
                         type="text"
@@ -33,24 +23,26 @@ export default function Dropdown(){
                         value={searchItem}
                         onChange={(e) => setSearchItem(e.target.value)}
                     />
-                    
-                    {searchItem && textOptions.filter((data) => {
-                        if (searchItem === '') {
-                            return data;
-                        } else if (data.toLowerCase().includes(searchItem.toLowerCase())) {
-                            return data;
-                        }
-                        return null;
-                    }).map(data => (
-                        <SelectOptions 
-                            key={data}
-                            onClick={() => { setItem(data); setIsOpen(false); setSearchItem(''); }}
-                        >
-                            {data}
-                        </SelectOptions>
-                    ))}
+                    {options
+                        .filter((option) => {
+                            if (searchItem === '') return option;
+                            return option.toLowerCase().includes(searchItem.toLowerCase());
+                        })
+                        .map((option) => (
+                            <SelectOptions
+                                key={option}
+                                onClick={() => {
+                                    setSelectedItem(option);
+                                    setIsOpen(false);
+                                    setSearchItem('');
+                                    onSelect(option);
+                                }}
+                            >
+                                {option}
+                            </SelectOptions>
+                        ))}
                 </SelectWrapper>
-            }
+            )}
         </DropdownWrapper>
     );
 }
@@ -65,12 +57,14 @@ const DropdownBox = styled.div`
     flex-shrink: 0;
     border: 0.5px solid #9DA1AD;
     border-radius: 5px;
+
     background: rgba(217, 217, 217, 0.00);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    padding: 4px 9px 5px 14px;
 `;
 
 const Arrow = styled.div`
@@ -79,7 +73,7 @@ const Arrow = styled.div`
 `;
 
 const SelectWrapper = styled.div`
-    width: 176px;
+    width: 190px;
     border: 0.5px solid #9DA1AD;
     border-radius: 5px;
     background: white;

@@ -16,7 +16,10 @@ const DateRangePicker = () => {
 
     return (
         <DateRangePickerWrapper>
-            <StyledDatePicker 
+            {!startDate && !endDate && (
+                <Placeholder>날짜를 선택하세요</Placeholder>
+            )}
+            <StyledDatePicker
                 selectsRange={true}
                 locale={ko}
                 dateFormat="yyyy년 MM월 dd일"
@@ -32,15 +35,35 @@ const DateRangePicker = () => {
 export default DateRangePicker;
 
 const DateRangePickerWrapper = styled.div`
-    /* Wrapper 스타일 */
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 100px;
 `;
 
+const Placeholder = styled.div`
+    position: absolute;
+    width: 280px;
+    height: 33px;
+    padding-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.regular};
+    font-size: ${(props) => props.theme.fontSizes.fontSize14};
+    color: #9DA1AD;
+    
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    background-color: white;
+    pointer-events: none;
+    z-index: 1;
+`;
+
 const StyledDatePicker = styled(DatePicker)`
-    /* DatePicker 스타일 */
     width: 280px;
     height: 33px;
     padding: 10px;
