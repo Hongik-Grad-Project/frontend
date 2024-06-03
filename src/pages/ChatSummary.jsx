@@ -11,6 +11,10 @@ export default function ChatSummary() {
         navigate('/create-project');
     };
 
+    const handleGotoChatClick = () => {
+        navigate('/chat');
+    };
+
     return (
         <>
             <HomeNav />
@@ -27,7 +31,7 @@ export default function ChatSummary() {
                     <NonPickTitleBox>
                         데이트폭력 문제
                     </NonPickTitleBox>
-                    <GoToChatButton>
+                    <GoToChatButton onClick={handleGotoChatClick}>
                         <img src={CreateChatImg} alt="GoToChat" />
                     </GoToChatButton>
                 </TitleBar>
