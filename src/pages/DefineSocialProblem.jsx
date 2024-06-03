@@ -260,7 +260,7 @@ const NumberNotice = styled.div`
     font-weight: ${(props) => props.theme.fontWeights.regular};
     font-size: ${(props) => props.theme.fontSizes.fontSize18};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
-    color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.white};
 
     background-color: #AEA0FF;
 `;

@@ -27,7 +27,7 @@ export default function CreateProject() {
             <HomeNav />
             <CreateProjectContainer>
                 <ContentBody>
-                    <ContentTitle>타겟 대상과 주제 선택 *</ContentTitle>
+                    <ContentTitle>타겟 대상과 주제 선택 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentText>
                         프로젝트를 통해 도움을 주고 싶은 대상과 주제를 선택하세요. <br />
                         예를 들어, 유기견 관련 프로젝트를 진행하고 싶다면 대상은 "유기견", 주제는 "유기동물"입니다.
@@ -53,7 +53,7 @@ export default function CreateProject() {
                     </ContentText>
                     <HopeProjectMember placeholder='프로젝트에 참여하기를 바라는 대상이 누구인가요?' />
 
-                    <ContentTitle>프로젝트 기간</ContentTitle>
+                    <ContentTitle>프로젝트 기간 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentText>
                         정확한 기간을 정하기 어렵다면, 대략적인 시작 기간이라도 적어주세요! <br />
                         프로젝트 수행 목표가 수립되면, 실행력이 높아집니다.
@@ -65,7 +65,7 @@ export default function CreateProject() {
 
                     </DateWrapper>
 
-                    <ContentTitle>프로젝트 제목</ContentTitle>
+                    <ContentTitle>프로젝트 제목 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentText>
                         프로젝트의 핵심 키워드를 포함하여 공백 포함 60자 이내로 작성해주세요. <br />
                         사회 문제, 대상, 얻을 수 있는 효과가 포함되면 좋습니다! <br />
@@ -73,7 +73,7 @@ export default function CreateProject() {
                     </ContentText>
                     <ProjectMainValue placeholder='프로젝트의 핵심 가치를 포함하여 제목에 적어주세요!' />
 
-                    <ContentTitle>대표 사진</ContentTitle>
+                    <ContentTitle>대표 사진 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentImageBox>
                         대표 사진 이미지 사이즈 <br />
                         최소: 가로 1400px, 세로 960px <br />
@@ -188,6 +188,12 @@ const BackButton = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
 
 const NextButton = styled.div`
@@ -207,6 +213,12 @@ const NextButton = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
 
 const HopeProjectMember = styled.input`
@@ -256,4 +268,8 @@ const DateWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 14px;
+`;
+
+const StyledAsterisk = styled.span`
+    color: #776BFF; /* Change to your desired color */
 `;

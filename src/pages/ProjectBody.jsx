@@ -25,16 +25,20 @@ export default function ProjectBody() {
             <HomeNav />
             <BodyContainer>
                 <ContentBody>
-                    <BodyTitle>본문</BodyTitle>
+                    <BodyTitle>본문 <StyledAsterisk>*</StyledAsterisk></BodyTitle>
 
                     <InputContainer>
                         <SmallTextInput placeholder='소제목: 첫 문장이 가장 중요! 계속 읽고 싶게 쓰기' />
-                        <BodyTextInput placeholder='본문: 이 내용을 모르는 사람도 공감할 수 있게' />
+                        <BodyInputContainer>
+                            <BodyTextInput placeholder='본문: 이 내용을 모르는 사람도 공감할 수 있게' />
+                        </BodyInputContainer>
                     </InputContainer>
 
                     <InputContainer>
                         <SmallTextInput placeholder='소제목' />
-                        <BodyTextInput placeholder='본문' />
+                        <BodyInputContainer>
+                            <BodyTextInput placeholder='본문' />
+                        </BodyInputContainer>
                     </InputContainer>
 
                     <ButtonBox>
@@ -67,6 +71,14 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
+        width: '400px',
+        height: '150px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        borderRadius: '30px',
     },
 };
 
@@ -105,7 +117,7 @@ const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    margin-left: 56px;
 `;
 
 const SmallTextInput = styled.input`
@@ -121,22 +133,31 @@ const SmallTextInput = styled.input`
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
     color: #9DA1AD;
     margin-bottom: 30px;
+
+    padding-left: 14px;
 `;
 
 const BodyTextInput = styled.input`
-    width: 800px;
-    height: 200px;
-    flex-shrink: 0;
-    border-radius: 1px;
-    border: 1px solid #E2E6EF;
-    background-color: #F4F6FA;
+    
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.medium};
     font-size: ${(props) => props.theme.fontSizes.fontSize16};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
+
     color: #9DA1AD;
-    margin-bottom: 30px;
-`;
+
+    padding-left: 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 800px;
+    height: 100%;
+
+    background-color: #F4F6FA;
+    border: none;
+    margin-top: 10px;
+    `;
 
 const ButtonBox = styled.div`
     width: 950px;
@@ -160,6 +181,12 @@ const BackButton = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
 
 const NextButton = styled.div`
@@ -177,6 +204,12 @@ const NextButton = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
 
 const ModalContent = styled.div`
@@ -205,4 +238,28 @@ const CheckButton = styled.button`
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
+`;
+
+const StyledAsterisk = styled.span`
+    color: #776BFF; /* Change to your desired color */
+`;
+
+
+const BodyInputContainer = styled.div`
+    border-radius: 1px;
+    border: 1px solid #E2E6EF;
+    background-color: #F4F6FA;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+
+    width: 818px;
 `;

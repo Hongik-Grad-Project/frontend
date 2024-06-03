@@ -50,30 +50,56 @@ export default function ChatSummary() {
                             노인 일자리 부족 문제
                         </ProjectTitle>
                         <ProjectContent>
-                            현상:<br />
-                            · 노인 일자리 문제가 심각<br />
-                            · 평균 수명이 늘어나서 은퇴 후에도 일하고 싶은 노인들이 많은데 일자리가 없음 <br /> <br />
-
-                            일자리가 없는 이유<br />
-                            · 회사에 다니는 사람은 법정 정년 60세 제한<br /> <br />
-
-                            회사에 다니는 사람이 은퇴 후 하고싶어 하는 것<br />
-                            · 본인 직무로 재취업, 다른 직무로 재취업, 자기 사업 시작<br /> <br />
-
-                            그 중에도 돕고 싶은 사람<br />
-                            · 자기 사업 시작하는 사람<br /> <br />
-
-                            해결책<br />
-                            · 트렌드에 둔감하고 사업 위험성이 큼<br />
-                            · 은퇴 후 사업을 시작한 후 성공한 후기를 모아 보는 사이트<br />
+                            <SummaryContentTitle>
+                                대상:<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 은퇴 후 사업을 시작하려는 50~60대<br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                주제:<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 노인 일자리 부족 문제<br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                현상:<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 노인 일자리 문제가 심각<br />
+                                · 평균 수명이 늘어나서 은퇴 후에도 일하고 싶은 노인들이 많은데 일자리가 없음 <br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                일자리가 없는 이유<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 회사에 다니는 사람은 법정 정년 60세 제한<br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                회사에 다니는 사람이 은퇴 후 하고싶어 하는 것<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 본인 직무로 재취업, 다른 직무로 재취업, 자기 사업 시작<br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                그 중에도 돕고 싶은 사람<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 자기 사업 시작하는 사람<br /> <br />
+                            </SummaryContentBody>
+                            <SummaryContentTitle>
+                                해결책<br />
+                            </SummaryContentTitle>
+                            <SummaryContentBody>
+                                · 트렌드에 둔감하고 사업 위험성이 큼<br />
+                                · 은퇴 후 사업을 시작한 후 성공한 후기를 모아 보는 사이트<br />
+                            </SummaryContentBody>
                         </ProjectContent>
                     </ProjectSummary>
                     <StartProjectButton onClick={handleStartProjectClick}>
                         프로젝트 하러가기
                     </StartProjectButton>
                 </SummaryWrapper>
-
-
             </SummaryContainer>
         </>
 
@@ -91,7 +117,7 @@ const SummaryContainer = styled.div`
 `;
 
 const TitleBar = styled.div`
-    margin-top: 20px;
+    margin-top: 40px;
 
     width: 303px;
     height: 713px;
@@ -174,11 +200,11 @@ const SummaryWrapper = styled.div`
 `;
 
 const ProjectSummary = styled.div`
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 65px;
 
     width: 745px;
-    height: 631px;
+    height: 653px;
     flex-shrink: 0;
     border-radius: 5px;
 
@@ -200,7 +226,7 @@ const ProjectTitle = styled.div`
 `;
 
 const ProjectContent = styled.div`
-    margin-top: 8px;
+    margin-top: 20px;
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.regular};
     font-size: ${(props) => props.theme.fontSizes.fontSize20};
@@ -216,7 +242,7 @@ const StartProjectButton = styled.div`
     width: 147px;
     height: 41px; 
     flex-shrink: 0;
-    border-radius: 5px;
+    border-radius: 200px;
 
     background-color: #776BFF;
 
@@ -236,6 +262,10 @@ const StartProjectButton = styled.div`
     margin-bottom: 29px;
 
     cursor: pointer;
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+    &:hover {
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+    }
 `;
 
 const TimeAndDate = styled.div`
@@ -244,4 +274,23 @@ const TimeAndDate = styled.div`
     font-size: ${(props) => props.theme.fontSizes.fontSize12};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
     color: ${(props) => props.theme.colors.black};
+`;
+
+
+const SummaryContentTitle = styled.div`
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.bold};
+    font-size: ${(props) => props.theme.fontSizes.fontSize16};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.black};
+    white-space: pre-wrap;
+`;
+
+const SummaryContentBody = styled.div`
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.regular};
+    font-size: ${(props) => props.theme.fontSizes.fontSize16};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.black};
+    white-space: pre-wrap;
 `;
