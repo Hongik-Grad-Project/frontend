@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import { useNavigate } from 'react-router';
 import Modal from 'react-modal';
+import TextAddButton from '../assets/images/textAdd.svg';
+import ImageAddButton from '../assets/images/imageAdd.svg';
 
 export default function ProjectBody() {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [inputContainers, setInputContainers] = useState([1]); // 초기 InputContainer 설정
 
     const handleBackButtonClick = () => {
         navigate('/create-project');
@@ -20,6 +23,10 @@ export default function ProjectBody() {
         setModalIsOpen(false); // 모달 닫기
     };
 
+    const handleAddTextInput = () => {
+        setInputContainers([...inputContainers, inputContainers.length + 1]); // 새로운 InputContainer 추가
+    };
+
     return (
         <>
             <HomeNav />
@@ -27,19 +34,17 @@ export default function ProjectBody() {
                 <ContentBody>
                     <BodyTitle>본문 <StyledAsterisk>*</StyledAsterisk></BodyTitle>
 
-                    <InputContainer>
-                        <SmallTextInput placeholder='소제목: 첫 문장이 가장 중요! 계속 읽고 싶게 쓰기' />
-                        <BodyInputContainer>
-                            <BodyTextInput placeholder='본문: 이 내용을 모르는 사람도 공감할 수 있게' />
-                        </BodyInputContainer>
-                    </InputContainer>
+                    {inputContainers.map((_, index) => (
+                        <InputContainer key={index}>
+                            <SmallTextInput placeholder='소제목' />
+                            <BodyTextInput placeholder='단락' />
+                        </InputContainer>
+                    ))}
 
-                    <InputContainer>
-                        <SmallTextInput placeholder='소제목' />
-                        <BodyInputContainer>
-                            <BodyTextInput placeholder='본문' />
-                        </BodyInputContainer>
-                    </InputContainer>
+                    <AddContainer>
+                        <TextAdd src={TextAddButton} alt="Text Add Button" onClick={handleAddTextInput} />
+                        <ImageAdd src={ImageAddButton} alt="Image Add Button" />
+                    </AddContainer>
 
                     <ButtonBox>
                         <BackButton onClick={handleBackButtonClick}>이전</BackButton>
@@ -138,26 +143,27 @@ const SmallTextInput = styled.input`
 `;
 
 const BodyTextInput = styled.input`
-    
     font-family: ${(props) => props.theme.fonts.primary};
     font-weight: ${(props) => props.theme.fontWeights.medium};
     font-size: ${(props) => props.theme.fontSizes.fontSize16};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
-
     color: #9DA1AD;
-
     padding-left: 14px;
-
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 800px;
-    height: 100%;
-
+    min-height: 200px;
     background-color: #F4F6FA;
-    border: none;
+    border: 1px solid #E2E6EF;
     margin-top: 10px;
-    `;
+
+    &::placeholder {
+        text-align: left; /* 왼쪽 정렬 */
+        font-size: 16px;   /* 폰트 크기 예시 */
+    }
+`;
 
 const ButtonBox = styled.div`
     width: 950px;
@@ -250,16 +256,24 @@ const StyledAsterisk = styled.span`
     color: #776BFF; /* Change to your desired color */
 `;
 
-
-const BodyInputContainer = styled.div`
-    border-radius: 1px;
-    border: 1px solid #E2E6EF;
-    background-color: #F4F6FA;
-    min-height: 200px;
+const AddContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    margin-bottom: 30px;
+    justify-content: center;
+    margin-left: 56px;
+`;
 
-    width: 818px;
+const TextAdd = styled.img`
+    width: 69px;
+    height: 66px;
+    margin-bottom: 30px;
+    cursor: pointer; // 클릭 가능한 커서로 변경
+`;
+
+const ImageAdd = styled.img`
+    width: 69px;
+    height: 66px;
+    margin-left: 13px;
+    margin-bottom: 30px;
 `;

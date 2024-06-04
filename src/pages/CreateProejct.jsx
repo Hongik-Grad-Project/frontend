@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import AddImg from '../assets/images/imageAddButton.svg';
@@ -10,6 +10,7 @@ export default function CreateProject() {
     const navigate = useNavigate();
     const [target, setTarget] = useState('대상 선택');
     const [subject, setSubject] = useState('주제 선택');
+    const fileInputRef = useRef(null);
 
     const handleBackButtonClick = () => {
         navigate('/chat/summary');
@@ -17,6 +18,16 @@ export default function CreateProject() {
 
     const handleNextButtonClick = () => {
         navigate('/project-body');
+    };
+
+    const handleImageClick = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        console.log(file);
+        // 여기서 파일을 업로드하거나 상태로 설정하는 등의 작업을 수행할 수 있습니다.
     };
 
     const targetOptions = ["아동", "청소년", "청년", "여성", "실버세대", "장애인", "이주민", "다문화", "지구촌", "어려운이웃", "우리사회", "유기동물", "야생동물"];
@@ -60,9 +71,8 @@ export default function CreateProject() {
                     </ContentText>
                     <DateWrapper>
                         <DateRangePicker />
-                        <span> ~ </span>
+                        <BetweenText>~</BetweenText>
                         <DateRangePicker />
-
                     </DateWrapper>
 
                     <ContentTitle>프로젝트 제목 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
@@ -77,7 +87,12 @@ export default function CreateProject() {
                     <ContentImageBox>
                         대표 사진 이미지 사이즈 <br />
                         최소: 가로 1400px, 세로 960px <br />
-                        <ImageButton src={AddImg} alt="Add Image Button" />
+                        <ImageButton src={AddImg} alt="Add Image Button" onClick={handleImageClick} />
+                        <HiddenFileInput
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                        />
                     </ContentImageBox>
                 </ContentBody>
                 <ButtonBox>
@@ -90,7 +105,7 @@ export default function CreateProject() {
                 </ButtonBox>
             </CreateProjectContainer>
         </>
-    )
+    );
 };
 
 const CreateProjectContainer = styled.div`
@@ -264,12 +279,22 @@ const DropDownContainer = styled.div`
 `;
 
 
-const DateWrapper = styled.div` 
+const DateWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    gap: 14px;
+    align-items: center;
+    margin-bottom: 100px;
 `;
 
 const StyledAsterisk = styled.span`
     color: #776BFF; /* Change to your desired color */
+`;
+
+const BetweenText = styled.span`
+    margin-left: 22px;
+    margin-right: 10px;
+    font-size: 16px;
+`;
+
+const HiddenFileInput = styled.input`
+    display: none;
 `;

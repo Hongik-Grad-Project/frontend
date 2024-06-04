@@ -73,7 +73,7 @@ const Arrow = styled.div`
 `;
 
 const SelectWrapper = styled.div`
-    width: 190px;
+    width: 201px;
     border: 0.5px solid #9DA1AD;
     border-radius: 5px;
     background: white;

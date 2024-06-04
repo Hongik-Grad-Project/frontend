@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import CreateChatImg from '../assets/images/createChatImage.svg';
@@ -6,14 +7,26 @@ import { useNavigate } from 'react-router';
 export default function ChatSummary() {
 
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
 
     const handleStartProjectClick = () => {
-        navigate('/create-project');
+        setShowModal(true);
     };
 
     const handleGotoChatClick = () => {
         navigate('/chat');
     };
+
+    const handleYesClick = () => {
+        setShowModal(false);
+        navigate('/create-project');
+    };
+
+    const handleNoClick = () => {
+        setShowModal(false);
+        navigate('/create-project');
+    };
+
 
     return (
         <>
@@ -101,6 +114,16 @@ export default function ChatSummary() {
                     </StartProjectButton>
                 </SummaryWrapper>
             </SummaryContainer>
+            {showModal && (
+                <ModalOverlay>
+                    <ModalContent>
+                        <p>AI로 기획서 초안을 작성하시겠습니까?</p>
+                        <ModalButton onClick={handleYesClick}>예</ModalButton>
+                        <ModalButton onClick={handleNoClick}>아니오</ModalButton>
+                    </ModalContent>
+                </ModalOverlay>
+            )}
+
         </>
 
 
@@ -137,8 +160,8 @@ const GoToChatButton = styled.div`
     position: absolute;
     bottom: 22px;
     right: 22px;
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 30px;
     margin-top: 20px; /* 필요에 따라 조정하세요 */
     display: flex;
     justify-content: center;
@@ -293,4 +316,65 @@ const SummaryContentBody = styled.div`
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
     color: ${(props) => props.theme.colors.black};
     white-space: pre-wrap;
+`;
+
+const ModalOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+    width: 400px;
+    height: 150px;
+    flex-shrink: 0;
+
+    padding-top: 37px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.bold};
+    font-size: ${(props) => props.theme.fontSizes.fontSize16};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.black};
+
+`;
+
+const ModalButton = styled.button`
+    width: 93px;
+    height: 40px;
+    padding: 8px;
+    margin: 25px;
+    border: none;
+
+    border-radius: 200px;
+    background-color: #E2E6EF;
+    color: ${(props) => props.theme.colors.black};
+    
+    cursor: pointer;
+    
+    transition: transform 0.3s ease;  // 애니메이션 효과의 지속 시간과 함수를 설정
+
+    &:hover {
+        background-color: #776BFF;
+        color: ${(props) => props.theme.colors.white};
+        transform: scale(1.1);  // 호버 시 10% 크기 증가
+
+    }
+
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.bold};
+    font-size: ${(props) => props.theme.fontSizes.fontSize16};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.black};
 `;
