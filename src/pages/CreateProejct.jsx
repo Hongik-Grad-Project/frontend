@@ -46,12 +46,12 @@ export default function CreateProject() {
                     <DropDownContainer>
                         <DropDown
                             options={targetOptions}
-                            placeholder="대상 선택"
+                            placeholder="실버 세대"
                             onSelect={setTarget}
                         />
                         <DropDown
                             options={subjectOptions}
-                            placeholder="주제 선택"
+                            placeholder="안정된 일자리"
                             onSelect={setSubject}
                         />
                     </DropDownContainer>
@@ -62,7 +62,7 @@ export default function CreateProject() {
                         만약 “노인 일자리 문제"를 해결하기 위한 아이디어 공유 플랫폼의 경우, 타겟 대상과 참여 대상이 동일하므로 해당 란은 채우지 않아도 됩니다. <br />
                         그러나 “유기견 구호 물품 전달" 같은 경우, 타겟 대상은 “유기견", 참여 대상은 “유기견에게 마음을 전하고 싶은 애견인"이 될 수 있습니다.
                     </ContentText>
-                    <HopeProjectMember placeholder='프로젝트에 참여하기를 바라는 대상이 누구인가요?' />
+                    <HopeProjectMember placeholder='은퇴 후 사업을 원하는 사람들' />
 
                     <ContentTitle>프로젝트 기간 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentText>
@@ -81,7 +81,7 @@ export default function CreateProject() {
                         사회 문제, 대상, 얻을 수 있는 효과가 포함되면 좋습니다! <br />
                         ex) “은퇴 후 사업 시작, 안전하게!”
                     </ContentText>
-                    <ProjectMainValue placeholder='프로젝트의 핵심 가치를 포함하여 제목에 적어주세요!' />
+                    <ProjectMainValue placeholder='은퇴 후 사업, 안전하게!' />
 
                     <ContentTitle>대표 사진 <StyledAsterisk>*</StyledAsterisk></ContentTitle>
                     <ContentImageBox>

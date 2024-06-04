@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import HomeNav from '../components/Home/HomeNav';
 import chatSendImg from '../assets/images/chatSend.svg';
@@ -8,6 +7,7 @@ import { useNavigate } from 'react-router';
 export default function AuroraChat() {
     const [messages, setMessages] = useState([]);
     const navigate = useNavigate();
+    const messageContainerRef = useRef(null);
 
     const predefinedConversation = [
         { user: "안녕 나는 사회문제 해결에 관심이 있어", ai: "네, 안녕하세요. 무슨 사회문제를 해결하고 싶으신가요?" },
@@ -35,6 +35,12 @@ export default function AuroraChat() {
         }
     }, [conversationIndex]);
 
+    useEffect(() => {
+        if (messageContainerRef.current) {
+            messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
+
     const handleChatFinishClick = () => {
         navigate('/chat/summary');
     };
@@ -46,7 +52,7 @@ export default function AuroraChat() {
                 사회문제를 어떻게 해결해야 좋을지 잘 모르겠나요? <br />
                 오로라 AI와 이야기 해보세요? 아이디어가 구체화 될 거에요.
                 <ChatWrapper>
-                    <MessageContainer>
+                    <MessageContainer ref={messageContainerRef}>
                         {messages.map((message, index) => (
                             <MessageBubble key={index} $sender={message.sender}>
                                 {message.text}
@@ -70,11 +76,11 @@ export default function AuroraChat() {
     );
 }
 
-    const ChatContainer = styled.div`
+const ChatContainer = styled.div`
     background-color: #F4F6FA;
-min-height: 100vh;
+    min-height: 100vh;
     display: flex;
-        flex-direction: column;
+    flex-direction: column;
     align-items: center;
     padding: 25px 26px 20px 26px; // 하단 패딩을 조정하여 입력창과의 간격 설정
 
@@ -83,13 +89,14 @@ min-height: 100vh;
     font-size: ${(props) => props.theme.fontSizes.fontSize22};
     line-height: ${(props) => props.theme.LineHeights.lineHeight};
     color: ${(props) => props.theme.colors.black};
+
+    height: 100%;
 `;
 
 const ChatWrapper = styled.div`
     width: 90%;
-max-width: 1100px;
+    max-width: 1100px;
     min-height: 200px; // 최소 높이 설정
-        max-height: calc(100vh - 220px); // 최대 높이 조정
     overflow-y: auto; // 내용이 많을 경우 스크롤
     display: flex;
     flex-direction: column;
@@ -103,19 +110,20 @@ max-width: 1100px;
 
 const MessageContainer = styled.div`
     flex: 1;
-width: 100%;
+    width: 100%;
     display: flex;
-        flex-direction: column;
+    flex-direction: column;
     margin-bottom: 20px;
     overflow-y: auto;
     padding: 10px 0;
+    height: 100%;
 `;
 
 const MessageBubble = styled.div`
     background-color: ${props => (props.$sender === 'user' ? '#776BFF' : '#E2E6EF')};
-border-radius: 14px;
+    border-radius: 14px;
     padding: 13px 19px 13px 19px;
-        max-width: 75%;
+    max-width: 75%;
     align-self: ${props => (props.$sender === 'user' ? 'flex-end' : 'flex-start')};
 
     font-family: ${(props) => props.theme.fonts.primary};
@@ -128,33 +136,33 @@ border-radius: 14px;
 
 const InputContainer = styled.div`
     width: 100%;
-display: flex;
+    display: flex;
     padding: 10px 0;
-    `;
+`;
 
 const InputWrapper = styled.div`
     position: relative;
-width: 100%; // InputWrapper의 너비를 100%로 설정하여 전체를 차지하도록 함
+    width: 100%; // InputWrapper의 너비를 100%로 설정하여 전체를 차지하도록 함
     max-width: 950px; // 최대 너비를 설정하여 다른 요소와 함ꏐ 배치가 가능하도록 함
-        height: 42px;
+    height: 42px;
     display: flex; // flex 속성 추가
     align-items: center; // 세로 중앙 정렬
 `;
 
 const InputBox = styled.input`
     width: 100%;  // 너비를 100%로 설정하여 부모 컨테이너의 전체 너비를 차지하게 함
-border-radius: 22px;
+    border-radius: 22px;
     border: 2px solid #007BFF;
-        padding: 12px 20px;
+    padding: 12px 20px;
     font-size: 16px;
     margin-top: 9px;
 `;
 
 const SendButton = styled.button`
     background: none;
-border: none;
+    border: none;
     cursor: pointer;
-        margin-left: 5px;
+    margin-left: 5px;
     margin-top: 10px;
 `;
 
@@ -162,11 +170,11 @@ const ChatEndButton = styled.button`
     background-color: #E2E6EF;
 
     width: 149px;
-        height: 48px;
-    
+    height: 48px;
+
     padding: 9px 28px 9px 28px;
     border-radius: 200px;
-    
+
     border: none;
     cursor: pointer;
     margin-left: auto;
@@ -182,4 +190,3 @@ const ChatEndButton = styled.button`
         color: #FEFEFE; // 호버 시 글자 색상 변경
     }
 `;
-

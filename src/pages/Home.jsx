@@ -25,7 +25,10 @@ const Home = () => {
                 <LandingImageComponent src={SecondLandingImg} alt="Second Landing" />
                 <LandingImageComponent src={ThirdLandingImg} alt="Third Landing" />
                 <LandingImageComponent src={FourthLandingImg} alt="Fourth Landing" />
-                <LandingImageComponent src={FifthLandingImg} alt="Fifth Landing" />
+                <FifthLandingWrapper>
+                    <LandingImageComponent src={FifthLandingImg} alt="Fifth Landing" />
+                    <NavigateButton onClick={navigateToTarget}>대화하러 가기</NavigateButton>
+                </FifthLandingWrapper>
                 
 
             </LandingContainer>
@@ -59,4 +62,39 @@ const ImageWithButton = styled.div`
     height: 100%;
     align-items: center;
     position: relative;
+`;
+
+
+const FifthLandingWrapper = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+`;
+
+const NavigateButton = styled.button`
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    bottom: 150px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #776BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    font-family: ${(props) => props.theme.fonts.primary};
+    font-weight: ${(props) => props.theme.fontWeights.medium};    
+    font-size: ${(props) => props.theme.fontSizes.fontSize24};
+    line-height: ${(props) => props.theme.LineHeights.lineHeight};
+    color: ${(props) => props.theme.colors.white};
+
+    transition: font-size 0.8s;
+
+    &:hover {
+        font-size: 30px;
+    }
 `;
